@@ -1,45 +1,25 @@
 package org.example.myapp;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Scanner;
+/*
+//스프링 부트를 실행할 수 있도록 기본정보를 자동 설정하는 annotation
+@EnableAutoConfiguration // 톰캣 서버 실행에 관련된 기초 설정을 자동으로 처리
 
-/// **
-// * 이 클래스는 한밭대학교 특강 웹 실무 실습 예제를 위한 첫번째 클래스입니다. <br>
-// * <code>App</code>
-// */
- public class App {
-  /**
-   * 프로그램의 시작점(main method)입니다. 콘솔에 "Hello World"를 출력합니다.
-   *
-   * @param args 커맨드라인 인자
-   */
+// @SpringBootApplication // anotation: bootRun시 시작 클래스 설정
+// 다른 컴포넌트들도 스캔함. 현재 클래스와 같은 또는 하위 패키지들에서 컴포넌트들 찾아 자동생성하는 설정
+// => @Component, @RestController, @Controller, @Service, @Repository등을 찾음
+@ComponentScan
+*/
+
+@SpringBootApplication // = @SpringBootConfiguration + @EnableAutoConfiguration + @ComponentScan
+public class App {
+
   public static void main(String[] args) {
-    //    class Calculator{ //클래스.메소드의 이해를 위한 예시 코드
-    //      int result;
-    //      void plus(int a){
-    //        this.result += a;
-    //      }
-    //      void minus(int a){
-    //        this.result -= a;
-    //      }
-    //    }
-    //
-    //    Calculator c1 = new Calculator();
-    //    Calculator c2 = new Calculator();
-    //
-    //    c1.plus(100);
-    //    c2.plus(555);
-    //    //중요사항 인스턴스 안에 메소드 없음!!! 값만 있음
-
-    Scanner scanner = new Scanner(System.in);
-    // Scanner scanner = new Scanner(new FileInputStream("a.txt"));
-    System.out.print("이름?: ");
-    String name = scanner.nextLine();
-    System.out.printf("이름은 %s 입니다\n", name);
-    scanner.close();
-
-    // PrintStream out2 = new PrintStream(new FileOutputStream("a.txt"));
-    // out2.println("Hello");
+    SpringApplication.run(App.class, args); // .class는 파일 확장자가 아님. .class 내의 부가정보 가져옴
+    System.out.println("스프링 부트 서버시작!");
   }
- }
+}
 
+// http://localhost:8080/여기서 실습. (로컬임)

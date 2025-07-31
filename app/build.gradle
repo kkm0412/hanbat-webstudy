@@ -19,6 +19,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.12.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    //개발용
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'//개발용) 코드 수정 후 서버 껏다 켤 필요 X
+
 }
 
 java {
