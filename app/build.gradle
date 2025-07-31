@@ -1,17 +1,22 @@
 //전부 메서드임 ()은 생략됨
 plugins {
-    id 'application'    //run 작업 실행 가능. application
+//    id 'application'    //run 작업 실행 가능. application
     id 'java'
+    id 'org.springframework.boot' version '3.5.4'
+    //id 'io.spring.dependency-management' version '1.1.4' <- 버전 알 때는 이렇
 }
+
+//SpringBoot의 버전에 맞춰 의존 라이브러리 버전을 관리하는 플러그인
+apply plugin: 'io.spring.dependency-management'
 
 repositories {  //다운로드 받을 서버 주소 지정
     mavenCentral()  //의존 라이브러리를 갖고 있는 중앙 저장소 서버의 주소
 }
 
 dependencies {
-    //일반 라이브러리
-
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     //테스트용
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.12.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
@@ -22,9 +27,9 @@ java {
     }
 }
 
-application {   //어플리케이션 플러그인 메서드
-    mainClass = 'org.example.myapp.App'
-}
+//application {   //어플리케이션 플러그인 메서드 //application 사용 할때만
+//    mainClass = 'org.example.myapp.App'
+//}
 
 jar {
     archiveFileName = 'myapp.jar'//app.jar가 아니라 myapp.jar로 생성됨
@@ -34,6 +39,12 @@ tasks.named('test') {   //테스트 플랫폼 설정
     useJUnitPlatform()
 }
 
-tasks.named('run') {
+tasks.named('bootRun') {
     standardInput = System.in // 표준 입력을 시스템 입력으로 설정
+}
+
+//Windows 콘솔에서 한글 깨질 때
+tasks.withType(JavaExec) {  //gradle이 개입해서 한글이 깨짐. 아웃풋,에러에 UTF-8 인코딩 추가
+    systemProperty 'sun.stdout.encoding', 'UTF-8'
+    systemProperty 'sun.stderr.encoding', 'UTF-8'
 }
