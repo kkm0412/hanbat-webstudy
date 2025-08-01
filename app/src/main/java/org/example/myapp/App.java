@@ -2,6 +2,7 @@ package org.example.myapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RestController;
 
 /*
 //스프링 부트를 실행할 수 있도록 기본정보를 자동 설정하는 annotation
@@ -14,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 */
 
 @SpringBootApplication // = @SpringBootConfiguration + @EnableAutoConfiguration + @ComponentScan
+@RestController
 public class App {
 
   public static void main(String[] args) {

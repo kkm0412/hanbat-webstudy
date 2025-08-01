@@ -21,7 +21,7 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     //개발용
     developmentOnly 'org.springframework.boot:spring-boot-devtools'//개발용) 코드 수정 후 서버 껏다 켤 필요 X
-
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 }
 
 java {
